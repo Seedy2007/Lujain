@@ -238,38 +238,44 @@ nav a:hover::after {
   animation: fadeIn 1s ease 2s forwards;
 }
 
-.scroll-line {
-  width: 2px;
-  height: 40px;
-  background: var(--accent);
+.scroll-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 0.5rem;
-  position: relative;
-  overflow: hidden;
+  height: 40px;
 }
 
-.scroll-line::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--white);
-  animation: scrollLine 2s infinite;
-  transform: translateY(-100%);
+.scroll-dots span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin: 4px 0;
+  animation: scrollDots 2s infinite;
 }
 
-@keyframes scrollLine {
+.scroll-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scroll-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes scrollDots {
   0% {
-    transform: translateY(-100%);
     opacity: 0;
+    transform: translateY(-10px) scale(0.8);
   }
   50% {
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
   100% {
-    transform: translateY(100%);
     opacity: 0;
+    transform: translateY(10px) scale(0.8);
   }
 }
 

@@ -138,7 +138,10 @@ nav a:hover::after {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100vw;
+  max-width: 100% !important;
+  left: 0;
+  right: 0;
 }
 
 .hero-overlay {

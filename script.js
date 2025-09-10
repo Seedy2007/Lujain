@@ -28,13 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
   observeFeaturedSection();
   observeSectionDividers();
   setupHeroMouseParallax();
-  setupHeroObserver();
   setupContactObserver();
   setupFooterObserver();
   setupModalViewer();
   setupBackToTop();
-  setupFormValidation();
-  setupProjectFilters();
   preloadHeroBackground();
 
   // === Scroll Effects ===
@@ -132,14 +129,6 @@ function observeSectionDividers() {
   dividers.forEach(divider => observer.observe(divider));
 }
 
-function setupHeroObserver() {
-  const heroText = document.querySelector(".hero-text");
-  if (!heroText) return;
-
-  const observer = createObserver(el => el.classList.add("visible"), config.thresholds.hero);
-  observer.observe(heroText);
-}
-
 function setupContactObserver() {
   const contact = document.querySelector(".contact-animate");
   if (!contact) return;
@@ -213,55 +202,6 @@ function toggleBackToTop() {
   }
 }
 
-function setupFormValidation() {
-  const form = document.querySelector('.contact-form');
-  if (!form) return;
-  
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Simple validation
-    let isValid = true;
-    const inputs = form.querySelectorAll('input, textarea');
-    
-    inputs.forEach(input => {
-      if (!input.value.trim()) {
-        input.style.borderColor = 'red';
-        isValid = false;
-      } else {
-        input.style.borderColor = '#ddd';
-      }
-    });
-    
-    if (isValid) {
-      // Form is valid - you would typically send data to a server here
-      alert('Thank you for your message! I will get back to you soon.');
-      form.reset();
-    }
-  });
-}
-
-function setupProjectFilters() {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      
-      // Add active class to clicked button
-      button.classList.add('active');
-      
-      // Get filter value
-      const filterValue = button.getAttribute('data-filter');
-      
-      // Here you would typically filter projects
-      // This is a placeholder for actual filtering logic
-      console.log(`Filtering by: ${filterValue}`);
-    });
-  });
-}
-
 function setupHeroMouseParallax() {
   const hero = document.querySelector("#hero");
   if (!hero) return;
@@ -294,7 +234,6 @@ function preloadHeroBackground() {
   img.src = 'hero.jpg';
   img.onload = () => {
     hero.style.backgroundImage = "url('hero.jpg')";
-    hero.classList.add("bg-loaded");
   };
   img.onerror = () => {
     // Fallback if image fails to load

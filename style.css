@@ -199,6 +199,16 @@ nav a:hover::after {
   color: var(--white);
   max-width: 800px;
   padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-text h2 {
@@ -206,25 +216,6 @@ nav a:hover::after {
   font-size: 4rem;
   margin-bottom: 1rem;
   position: relative;
-  overflow: hidden;
-}
-
-.hero-text h2::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  color: var(--accent);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: textReveal 2s ease forwards;
-}
-
-@keyframes textReveal {
-  0% { width: 0; }
-  100% { width: 100%; }
 }
 
 .hero-text p {
@@ -462,42 +453,43 @@ section h2::after {
   margin-bottom: 3rem;
 }
 
-.project-filters {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.filter-btn {
-  padding: 0.5rem 1.5rem;
-  background: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  border-radius: 50px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.filter-btn:hover, .filter-btn.active {
-  background: var(--primary);
-  color: var(--white);
-}
-
 .projects-cta {
   text-align: center;
 }
 
+.cta-link {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  border: 2px solid var(--primary);
+}
+
+.cta-link:hover {
+  background: transparent;
+  color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
 /* Contact Section */
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-info {
+  text-align: center;
 }
 
 .contact-info p {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .contact-info a {
@@ -505,6 +497,7 @@ section h2::after {
   text-decoration: none;
   transition: var(--transition);
   position: relative;
+  font-weight: 600;
 }
 
 .contact-info a::after {
@@ -513,7 +506,7 @@ section h2::after {
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background: var(--accent);
   transition: var(--transition);
 }
@@ -522,42 +515,8 @@ section h2::after {
   width: 100%;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: var(--radius);
-  font-family: inherit;
-  transition: var(--transition);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(192, 214, 223, 0.3);
-}
-
-.contact-form button {
-  padding: 1rem;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.contact-form button:hover {
-  background: var(--accent);
-  color: var(--primary);
+.contact-info a:hover {
+  color: var(--accent-dark);
 }
 
 /* Footer */
@@ -756,8 +715,7 @@ footer {
     font-size: 16px;
   }
   
-  .about-content,
-  .contact-content {
+  .about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -833,5 +791,11 @@ footer {
   
   #cursor-follower {
     display: none;
+  }
+  
+  #hero {
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
   }
 }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Najwa is an architect crafting elegant, sustainable spaces. Explore her portfolio.">
+  <meta property="og:title" content="Najwa — Architect">
+  <meta property="og:image" content="hero.jpg">
+  <meta property="og:description" content="Explore Najwa’s signature architectural projects.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Najwa — Architect</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav aria-label="Main navigation">
+      <h1>Najwa</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+
+    <!-- Hero Section -->
+    <section id="hero" class="fade-in">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h2>Designing Spaces That Inspire</h2>
+        <p>Architecture | Interior | Vision</p>
+      </div>
+      <div class="scroll-cue">↓ Scroll</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="slide-up">
+      <h2>About Najwa</h2>
+      <p>Najwa is an architect with a passion for creating meaningful, sustainable, and elegant spaces. Her work blends technical precision with artistic sensitivity.</p>
+    </section>
+    <div class="section-divider"></div>
+
+    <!-- Featured Projects -->
+    <section id="featured" class="fade-in">
+      <h2>Signature Projects</h2>
+      <div class="project-grid">
+
+        <!-- Example Project Card -->
+        <article class="project-card">
+          <div class="card-content">
+            <img src="villa.jpg" alt="Modern Villa Exterior" />
+            <h3>Modern Villa</h3>
+            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="modal-details" style="display: none;">
+              <p data-modal>
+                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-content">
+            <img src="villa.jpg" alt="Modern Villa Exterior" />
+            <h3>Modern Villa</h3>
+            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="modal-details" style="display: none;">
+              <p data-modal>
+                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-content">
+            <img src="villa.jpg" alt="Modern Villa Exterior" />
+            <h3>Modern Villa</h3>
+            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="modal-details" style="display: none;">
+              <p data-modal>
+                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-content">
+            <img src="villa.jpg" alt="Modern Villa Exterior" />
+            <h3>Modern Villa</h3>
+            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="modal-details" style="display: none;">
+              <p data-modal>
+                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <div class="section-divider"></div>
+
+    <!-- All Projects -->
+    <section id="projects" class="slide-up">
+      <h2>Explore All Work</h2>
+      <p><a class="cta-link" href="portfolio.html">From concept to completion, discover Najwa’s full portfolio.</a></p>
+    </section>
+    <div class="section-divider"></div>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-animate">
+      <h2>Let’s Collaborate</h2>
+      <p>Email: <a href="mailto:najwa@example.com">najwa@example.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/najwa" target="_blank">linkedin.com/in/najwa</a></p>
+    </section>
+    <div class="section-divider"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Najwa. All rights reserved.</p>
+  </footer>
+  <!-- Modal Viewer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <img id="modal-image" src="" alt="" />
+      <div class="modal-text">
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+      </div>
+    </div>
+  </div>
+  <!-- Place script here -->
+  <script src="script.js"></script>
+</body>
+</html>

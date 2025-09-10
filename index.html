@@ -2,27 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Najwa is an architect crafting elegant, sustainable spaces. Explore her portfolio.">
-  <meta property="og:title" content="Najwa — Architect">
+  <meta name="description" content="Lujain is an architect crafting elegant, sustainable spaces. Explore her portfolio.">
+  <meta property="og:title" content="Lujain — Architect">
   <meta property="og:image" content="hero.jpg">
-  <meta property="og:description" content="Explore Najwa’s signature architectural projects.">
+  <meta property="og:description" content="Explore Lujain's signature architectural projects.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Najwa — Architect</title>
+  <title>Lujain — Architect</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="scroll-bar"></div>
+<div id="cursor-follower"></div>
 
   <!-- Navigation -->
   <header>
     <nav aria-label="Main navigation">
-      <h1>Najwa</h1>
+      <h1>Lujain</h1>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#featured">Featured</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" data-hover="About">About</a></li>
+        <li><a href="#featured" data-hover="Work">Featured</a></li>
+        <li><a href="#projects" data-hover="Portfolio">Projects</a></li>
+        <li><a href="#contact" data-hover="Connect">Contact</a></li>
       </ul>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
   </header>
   <main>
@@ -31,16 +38,31 @@
     <section id="hero" class="fade-in">
       <div class="hero-overlay"></div>
       <div class="hero-text">
-        <h2>Designing Spaces That Inspire</h2>
+        <h2 data-text="Designing Spaces That Inspire">Designing Spaces That Inspire</h2>
         <p>Architecture | Interior | Vision</p>
+        <div class="hero-buttons">
+          <a href="#featured" class="cta-button">View Work</a>
+          <a href="#contact" class="cta-button outline">Contact Me</a>
+        </div>
       </div>
-      <div class="scroll-cue">↓ Scroll</div>
+      <div class="scroll-cue">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="slide-up">
-      <h2>About Najwa</h2>
-      <p>Najwa is an architect with a passion for creating meaningful, sustainable, and elegant spaces. Her work blends technical precision with artistic sensitivity.</p>
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Lujain</h2>
+          <p>Lujain is an architect with a passion for creating meaningful, sustainable, and elegant spaces. Her work blends technical precision with artistic sensitivity, creating environments that inspire and transform.</p>
+          <p>With over 8 years of experience in both residential and commercial architecture, Lujain brings a unique perspective to every project, focusing on harmony between form and function.</p>
+        </div>
+        <div class="about-image">
+          <div class="image-placeholder"></div>
+        </div>
+      </div>
     </section>
     <div class="section-divider"></div>
 
@@ -49,10 +71,15 @@
       <h2>Signature Projects</h2>
       <div class="project-grid">
 
-        <!-- Example Project Card -->
+        <!-- Project Cards -->
         <article class="project-card">
           <div class="card-content">
-            <img src="villa.jpg" alt="Modern Villa Exterior" />
+            <div class="image-container">
+              <img src="villa.jpg" alt="Modern Villa Exterior" />
+              <div class="project-overlay">
+                <button class="view-project">View Project</button>
+              </div>
+            </div>
             <h3>Modern Villa</h3>
             <p>A minimalist retreat blending nature and geometry.</p>
             <div class="modal-details" style="display: none;">
@@ -64,36 +91,51 @@
         </article>
         <article class="project-card">
           <div class="card-content">
-            <img src="villa.jpg" alt="Modern Villa Exterior" />
-            <h3>Modern Villa</h3>
-            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="image-container">
+              <img src="villa.jpg" alt="Urban Loft Interior" />
+              <div class="project-overlay">
+                <button class="view-project">View Project</button>
+              </div>
+            </div>
+            <h3>Urban Loft</h3>
+            <p>Industrial elegance meets modern comfort in the heart of the city.</p>
             <div class="modal-details" style="display: none;">
               <p data-modal>
-                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+                This urban loft transformation preserved historical elements while introducing contemporary design features for a unique living experience.
               </p>
             </div>
           </div>
         </article>
         <article class="project-card">
           <div class="card-content">
-            <img src="villa.jpg" alt="Modern Villa Exterior" />
-            <h3>Modern Villa</h3>
-            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="image-container">
+              <img src="villa.jpg" alt="Coastal Residence" />
+              <div class="project-overlay">
+                <button class="view-project">View Project</button>
+              </div>
+            </div>
+            <h3>Coastal Residence</h3>
+            <p>Seamless integration of indoor and outdoor living spaces.</p>
             <div class="modal-details" style="display: none;">
               <p data-modal>
-                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+                Designed to maximize ocean views while providing shelter from coastal winds, this residence celebrates its spectacular setting.
               </p>
             </div>
           </div>
         </article>
         <article class="project-card">
           <div class="card-content">
-            <img src="villa.jpg" alt="Modern Villa Exterior" />
-            <h3>Modern Villa</h3>
-            <p>A minimalist retreat blending nature and geometry.</p>
+            <div class="image-container">
+              <img src="villa.jpg" alt="Commercial Complex" />
+              <div class="project-overlay">
+                <button class="view-project">View Project</button>
+              </div>
+            </div>
+            <h3>Commercial Complex</h3>
+            <p>A dynamic space for work, collaboration, and innovation.</p>
             <div class="modal-details" style="display: none;">
               <p data-modal>
-                This villa project was designed to harmonize with its natural surroundings, using sustainable materials and geometric forms to create a serene retreat.
+                This commercial complex was designed to foster creativity and collaboration, with flexible spaces that adapt to various business needs.
               </p>
             </div>
           </div>
@@ -104,24 +146,54 @@
 
     <!-- All Projects -->
     <section id="projects" class="slide-up">
-      <h2>Explore All Work</h2>
-      <p><a class="cta-link" href="portfolio.html">From concept to completion, discover Najwa’s full portfolio.</a></p>
+      <div class="projects-header">
+        <h2>Explore All Work</h2>
+        <p>From concept to completion, discover Lujain's full portfolio of innovative designs.</p>
+      </div>
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="residential">Residential</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+        <button class="filter-btn" data-filter="interior">Interior</button>
+      </div>
+      <div class="projects-cta">
+        <a class="cta-link" href="portfolio.html">View Full Portfolio</a>
+      </div>
     </section>
     <div class="section-divider"></div>
 
     <!-- Contact -->
     <section id="contact" class="contact-animate">
-      <h2>Let’s Collaborate</h2>
-      <p>Email: <a href="mailto:najwa@example.com">najwa@example.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/najwa" target="_blank">linkedin.com/in/najwa</a></p>
+      <h2>Let's Collaborate</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <p>Email: <a href="mailto:lujain@example.com">lujain@example.com</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/lujain" target="_blank">linkedin.com/in/lujain</a></p>
+          <p>Instagram: <a href="https://instagram.com/lujain" target="_blank">@lujain</a></p>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
     </section>
     <div class="section-divider"></div>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Najwa. All rights reserved.</p>
+    <div class="footer-content">
+      <p>&copy; 2025 Lujain. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">LN</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
   </footer>
+  
   <!-- Modal Viewer -->
   <div id="modal" class="modal">
     <div class="modal-content">
@@ -133,7 +205,11 @@
       </div>
     </div>
   </div>
-  <!-- Place script here -->
+  
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+  
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>

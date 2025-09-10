@@ -22,6 +22,8 @@ const config = {
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
   // === Setup Functions ===
+  initCustomCursor();
+  setupMobileMenu();
   setupAnimatedElements();
   observeFeaturedSection();
   observeSectionDividers();
@@ -30,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setupContactObserver();
   setupFooterObserver();
   setupModalViewer();
+  setupBackToTop();
+  setupFormValidation();
+  setupProjectFilters();
   preloadHeroBackground();
 
   // === Scroll Effects ===
@@ -38,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     applyHeroParallax();
     updateScrollProgress();
     updateHeroBackground();
+    toggleBackToTop();
   });
 });
 
@@ -58,6 +64,39 @@ function createObserver(callback, threshold = 0.3) {
 // =======================
 // Setup Functions
 // =======================
+function initCustomCursor() {
+  if (window.innerWidth > 900) {
+    const cursor = document.getElementById('cursor-follower');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    
+    // Add hover effect to interactive elements
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .view-project');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+      });
+    });
+  }
+}
+
+function setupMobileMenu() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav ul');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+  }
+}
+
 function setupAnimatedElements() {
   const elements = document.querySelectorAll(".fade-in, .slide-up");
   elements.forEach((el, i) => {
@@ -124,11 +163,12 @@ function setupModalViewer() {
   const modalDescription = document.getElementById("modal-description");
   const closeButton = document.querySelector(".close-button");
 
-  document.querySelectorAll(".project-card").forEach(card => {
+  document.querySelectorAll(".project-card, .view-project").forEach(card => {
     card.addEventListener("click", () => {
-      const img = card.querySelector("img").src;
-      const title = card.querySelector("h3").textContent;
-      const desc = card.querySelector(".modal-details p[data-modal]")?.textContent || "";
+      const img = card.querySelector("img")?.src || card.closest('.project-card').querySelector("img").src;
+      const title = card.querySelector("h3")?.textContent || card.closest('.project-card').querySelector("h3").textContent;
+      const desc = card.querySelector(".modal-details p[data-modal]")?.textContent || 
+                  card.closest('.project-card').querySelector(".modal-details p[data-modal]")?.textContent || "";
 
       modalImage.src = img;
       modalTitle.textContent = title;
@@ -150,16 +190,98 @@ function setupModalViewer() {
   }
 }
 
+function setupBackToTop() {
+  const backToTopBtn = document.getElementById("back-to-top");
+  if (!backToTopBtn) return;
+  
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+function toggleBackToTop() {
+  const backToTopBtn = document.getElementById("back-to-top");
+  if (!backToTopBtn) return;
+  
+  if (window.scrollY > 500) {
+    backToTopBtn.classList.add("visible");
+  } else {
+    backToTopBtn.classList.remove("visible");
+  }
+}
+
+function setupFormValidation() {
+  const form = document.querySelector('.contact-form');
+  if (!form) return;
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Simple validation
+    let isValid = true;
+    const inputs = form.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        input.style.borderColor = 'red';
+        isValid = false;
+      } else {
+        input.style.borderColor = '#ddd';
+      }
+    });
+    
+    if (isValid) {
+      // Form is valid - you would typically send data to a server here
+      alert('Thank you for your message! I will get back to you soon.');
+      form.reset();
+    }
+  });
+}
+
+function setupProjectFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Get filter value
+      const filterValue = button.getAttribute('data-filter');
+      
+      // Here you would typically filter projects
+      // This is a placeholder for actual filtering logic
+      console.log(`Filtering by: ${filterValue}`);
+    });
+  });
+}
+
 function setupHeroMouseParallax() {
   const hero = document.querySelector("#hero");
   if (!hero) return;
 
   hero.addEventListener("mousemove", e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 5;
-    const y = (e.clientY / window.innerHeight - 0.5) * 5;
+    if (window.innerWidth > 900) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      const heroText = document.querySelector(".hero-text");
+      if (heroText) {
+        heroText.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    }
+  });
+  
+  // Reset position when mouse leaves
+  hero.addEventListener("mouseleave", () => {
     const heroText = document.querySelector(".hero-text");
     if (heroText) {
-      heroText.dataset.mouseOffset = `${x},${y}`;
+      heroText.style.transform = 'translate(0, 0)';
     }
   });
 }
@@ -174,6 +296,10 @@ function preloadHeroBackground() {
     hero.style.backgroundImage = "url('hero.jpg')";
     hero.classList.add("bg-loaded");
   };
+  img.onerror = () => {
+    // Fallback if image fails to load
+    hero.style.background = 'linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%)';
+  };
 }
 
 
@@ -186,13 +312,11 @@ function handleHeaderScroll() {
 }
 
 function applyHeroParallax() {
-  const heroText = document.querySelector(".hero-text");
-  if (!heroText) return;
+  const hero = document.getElementById("hero");
+  if (!hero) return;
 
-  const scrollOffset = window.scrollY * 0.2;
-  const mouseOffset = heroText.dataset.mouseOffset || "0,0";
-  const [mx, my] = mouseOffset.split(",").map(Number);
-  heroText.style.transform = `translate(${mx}px, ${scrollOffset + my}px)`;
+  const scrollOffset = window.scrollY * 0.5;
+  hero.style.backgroundPosition = `center ${scrollOffset}px`;
 }
 
 function updateScrollProgress() {
@@ -209,6 +333,11 @@ function updateHeroBackground() {
   const hero = document.getElementById("hero");
   if (!hero) return;
 
-  const offset = window.scrollY * 0.5;
-  hero.style.backgroundPosition = `center ${offset}px`;
+  const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  const opacity = 1 - Math.min(scrollPercent * 3, 1);
+  const overlay = document.querySelector('.hero-overlay');
+  
+  if (overlay) {
+    overlay.style.opacity = opacity;
+  }
 }

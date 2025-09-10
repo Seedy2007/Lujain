@@ -25,32 +25,12 @@ body {
   line-height: 1.6;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  cursor: none;
 }
 
 html {
   font-size: 20px;
   scroll-padding-top: 80px;
   scroll-behavior: smooth;
-}
-
-/* Custom Cursor */
-#cursor-follower {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  transition: width 0.3s, height 0.3s, background 0.3s;
-}
-
-#cursor-follower.hover {
-  width: 40px;
-  height: 40px;
-  background: rgba(192, 214, 223, 0.2);
 }
 
 /* Navigation */
@@ -117,24 +97,6 @@ nav a {
   padding: 0.5rem 0;
 }
 
-nav a::before {
-  content: attr(data-hover);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 0.8rem;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: var(--transition);
-}
-
-nav a:hover::before {
-  opacity: 1;
-  transform: translateY(5px);
-}
-
 nav a::after {
   content: "";
   position: absolute;
@@ -176,11 +138,7 @@ nav a:hover::after {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
 }
 
 .hero-overlay {
@@ -783,19 +741,5 @@ footer {
   
   .modal-content {
     padding: 1rem;
-  }
-  
-  body {
-    cursor: auto;
-  }
-  
-  #cursor-follower {
-    display: none;
-  }
-  
-  #hero {
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
   }
 }

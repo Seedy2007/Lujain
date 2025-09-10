@@ -22,7 +22,6 @@ const config = {
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
   // === Setup Functions ===
-  initCustomCursor();
   setupMobileMenu();
   setupAnimatedElements();
   observeFeaturedSection();
@@ -61,27 +60,6 @@ function createObserver(callback, threshold = 0.3) {
 // =======================
 // Setup Functions
 // =======================
-function initCustomCursor() {
-  if (window.innerWidth > 900) {
-    const cursor = document.getElementById('cursor-follower');
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    
-    // Add hover effect to interactive elements
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .view-project');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
-      });
-    });
-  }
-}
-
 function setupMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('nav ul');
